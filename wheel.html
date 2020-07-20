@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="animate.js"></script>
+    <script>
+        //获得窗口的对象,用来获得每一次轮播的距离
+        var win = document.getElementsByClassName("window")[0];
+        //获得大的容器的对象
+        var box = document.getElementsByClassName("box")[0];
+        //获取按钮的集合
+        var btns = document.querySelectorAll(".btn li");
+    
+        //获取窗口大小
+        //获得轮播的运动的长度
+        var winW = parseInt(getComputedStyle(win, null).width);
+    
+        // console.log(css(box,"width",100));
+        //轮播的初始位置
+        var num=0;
+        //运动的函数
+        function move() {
+            //每次轮播要加1
+            num++;
+            //当运动到最后一张的处理逻辑
+            if (num > btns.length - 1) {
+                //当运动完最后一张,需要即时回到第一张
+                animate(box, {
+                    "marginLeft": -num * winW
+                }, 500, Tween.Linear, function () {
+                    box.style.marginLeft = 0;
+                });
+                //将位置再回拨到第一张
+                num = 0;
+            } else {
+                //除了最后一张以外的运动方式
+                animate(box, {
+                    "marginLeft": -num * winW
+                }, 500)
+            }
+            //按钮随着轮播的变化而变化
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].style.background = "#fff"
+            }
+            btns[num].style.background = "#666"
+        }
+    
+        //自动轮播 每隔三秒,运动一次
+        var t = setInterval(move, 3000)
+    
+    
+        //按钮轮播
+        //通过按钮进行切换
+        for (let i = 0; i < btns.length; i++) {
+            //给每一个按钮添加事件
+            btns[i].onclick = function () {
+                num = i;//将当前点击的按钮和轮播的值进行关联
+                //点击的时候的运动方式
+                animate(box, {
+                    "marginLeft": -num * winW
+                }, 500)
+                //点击的时候按钮的变化
+                for (var j = 0; j < btns.length; j++) {
+                    btns[j].style.background = "#fff"
+                }
+                btns[num].style.background = "#666"
+            }
+        }
+    
+    
+        //鼠标移入移出
+        //当鼠标移入时,停止轮播
+    
+        win.onmouseover = function () {
+            clearInterval(t);
+        }
+        //当鼠标离开时,继续动画
+        win.onmouseout = function () {
+            t = setInterval(move, 3000)
+        }
+    </script>
+    
+</body>
+</html>

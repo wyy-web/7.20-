@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span></span>
+        <em></em>
+        <strong></strong>
+        <a href=""></a>
+    </div>
+    <ul>
+        <li>
+            <span>
+
+            </span>
+        </li>
+    </ul>
+    <script>
+        //为什么要使用节点
+        //1.确定上下文的取法 ,加快元素的查询速度
+        //面试题:如何加快元素的查询速度
+    //    1.确定上下文 环境 区间
+    // 2.通过节点关系 父(往外找) 子(内) 兄弟(上\下),通过节点的属性 父:parentNode parentElement
+    // var div=document.querySelectorAll("div");
+    // div.getElementsByTagName("span");
+    // div.getElementsByTagName("strong");
+    // div.getElementsByTagName("em");
+
+
+    //2.动态操作dom 文档  添加内容 删除 替换  克隆
+    //通过方法  函数
+    //document.createElement()  创建
+    // 父元素.appendChild(子元素);  插入
+    // 父元素.insertBefore(插入的元素,前面 的元素)  插入
+    // 父元素.removeChild(删除的元素)
+    // 父元素.replaceChild(替换的元素,被替换的元素)
+    // 父元素.cloneNode([true]) 插入到页面当中
+    </script>
+</body>
+</html>

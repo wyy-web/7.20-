@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="window">
+
+    </div>
+    <script src="animate.js"></script>
+    <script src="wheel2.js"></script>
+    <!-- 轮播图中用到了动画所以动画要在前面 -->
+    <script>
+        //标签选择器  标签名{}
+        //第一个参数:放入的容器 第二个参数:布局的内容 第三个参数:关于轮播控制
+        new wheel(".window",{
+            imgs:["https://img.alicdn.com/tfs/TB1ftPuNLb2gK0jSZK9XXaEgFXa-1130-500.jpg","//img.alicdn.com/imgextra/i2/1734167/O1CN01hf7Rdc1geX1BWeufk_!!1734167-0-lubanu.jpg","https://img.alicdn.com/imgextra/i3/183/O1CN0191fvrH1DDr5lNYIIE_!!183-0-luban.jpg"],
+            imgColor:["#f13d18","#f66a75","#00d995"],
+            links:["http://baidu.com","http://sxuek.com","http://www.tmall.com/"],
+            imgSize:[1130,500],
+            btnColor:"white",
+            btnActive:"pink",
+            btnPos:["center","20"]
+        },{
+           time:5,
+           eachTime:2,
+           runStyle:""//默认直线运动
+        })
+    </script>
+</body>
+</html>
